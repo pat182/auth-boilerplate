@@ -1,0 +1,57 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <list>
+          <option value="aiomysql" />
+          <option value="alembic" />
+          <option value="annotated-doc" />
+          <option value="annotated-types" />
+          <option value="anyio" />
+          <option value="bcrypt" />
+          <option value="certifi" />
+          <option value="cffi" />
+          <option value="click" />
+          <option value="colorama" />
+          <option value="cryptography" />
+          <option value="fastapi" />
+          <option value="greenlet" />
+          <option value="h11" />
+          <option value="httpcore" />
+          <option value="httpx" />
+          <option value="idna" />
+          <option value="iniconfig" />
+          <option value="Mako" />
+          <option value="MarkupSafe" />
+          <option value="packaging" />
+          <option value="passlib" />
+          <option value="pluggy" />
+          <option value="pycountry" />
+          <option value="pycparser" />
+          <option value="pydantic" />
+          <option value="pydantic-settings" />
+          <option value="pydantic_core" />
+          <option value="Pygments" />
+          <option value="PyJWT" />
+          <option value="PyMySQL" />
+          <option value="pytest" />
+          <option value="python-dotenv" />
+          <option value="python-multipart" />
+          <option value="SQLAlchemy" />
+          <option value="starlette" />
+          <option value="typing-inspection" />
+          <option value="typing_extensions" />
+          <option value="uvicorn" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8Inspection" enabled="true" level="INFORMATION" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="E302" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
