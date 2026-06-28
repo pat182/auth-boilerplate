@@ -16,5 +16,5 @@ COPY . .
 
 EXPOSE 8000
 
-# no reload here, handled in docker-compose
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Run Alembic migrations before starting FastAPI
+CMD ["sh", "-c", "alembic upgrade head && uvicorn main:app --host 0.0.0.0 --port 8000"]

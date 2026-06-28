@@ -30,9 +30,9 @@ def app_login(request: Request,
     )
 
 @router.post("/auth",response_model=TokenResponse)
-def login(request: LoginRequest,db: Annotated[Session, Depends(get_db)], response: Response):
-    auth = AuthService(db, response)
-    token_data = auth.access_tokens(email=request.email, password=request.password, remember_me=request.remember_me)
+def login(request:Request,body: LoginRequest,db: Annotated[Session, Depends(get_db)], response: Response):
+    auth = AuthService(db, response,request.state.device_info)
+    token_data = auth.access_tokens(email=body.email, password=body.password)
     set_auth_cookies(
         response, access_token=token_data['access_token'],
         refresh_token=token_data['refresh_token'],

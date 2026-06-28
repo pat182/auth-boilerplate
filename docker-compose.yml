@@ -4,30 +4,35 @@ services:
     container_name: mysql_db
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: "test123!@#"
-      MYSQL_DATABASE: some_api
+      MYSQL_ROOT_PASSWORD: test123!@#
+      MYSQL_DATABASE: auth_test
     ports:
       - "3307:3306"
     volumes:
-      - mysql_data:/var/lib/mysql
+      - db_data:/var/lib/mysql
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-p$MYSQL_ROOT_PASSWORD"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-p${MYSQL_ROOT_PASSWORD}"]
       interval: 10s
       timeout: 5s
       retries: 5
 
-  fastapi:
+  fastapi_app:
     build: .
     container_name: fastapi_app
-    ports:
-      - "8000:8000"
+    restart: always
     depends_on:
       db:
         condition: service_healthy
-    env_file: .env
+    environment:
+      DB_USER: root
+      DB_PASSWORD: test123!@#
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: auth_test
+    ports:
+      - "8000:8000"
     volumes:
       - .:/app
-    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 
 volumes:
-  mysql_data:
+  db_data:
